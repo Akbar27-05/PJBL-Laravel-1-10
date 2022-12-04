@@ -58,6 +58,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     });
     Route::group(['middleware'=>['CekLogin:kasir']],function(){
         Route::resource('order',OrderController::class);
+        
+        Route::resource('orderdetail',OrderDetailController::class);
     });
     Route::group(['middleware'=>['CekLogin:manager']],function(){
         Route::resource('kategori',KategoriController::class);
@@ -66,9 +68,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
         Route::get('select',[MenuController::class,'select']);
         Route::post('postmenu/{id}',[MenuController::class,'update']);
 
-        Route::resource('order',OrderController::class);
 
-        Route::resource('orderdetail',OrderDetailController::class);
 
         Route::resource('pelanggan',PelangganController::class);
         
